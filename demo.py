@@ -1,6 +1,7 @@
 from datetime import datetime
 import pandas as pd
 import dotenv
+import socket
 import faker
 import boto3
 import os
@@ -37,8 +38,8 @@ def processingData(data):
     for line in data: 
         cnt += 1
     
-    with open(f"{HOST_NAME}.log", "w") as file:
-        file.write(f"{HOST_NAME} - {datetime.now()} - Found {cnt} records in {BUCKET_KEY}")
+    with open(f"{socket.gethostname()}.log", "w") as file:
+        file.write(f"{socket.gethostname()} - {datetime.now()} - Found {cnt} records in {BUCKET_KEY}")
     
 def main():
     data = readDataFromS3()
