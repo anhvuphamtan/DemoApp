@@ -16,6 +16,9 @@ def setVarGlobal():
     BUCKET_KEY  = os.getenv('BUCKET_KEY')
     HOST_NAME   = os.getenv('HOST_NAME')
 
+    script_directory = os.path.dirname(os.path.realpath(__file__))
+    os.chdir(script_directory)
+
 def readDataFromS3():
     S3_client = boto3.client(
         "s3",
